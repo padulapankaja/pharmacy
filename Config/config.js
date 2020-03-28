@@ -1,3 +1,7 @@
 module.exports = {
-    url: 'mongodb://127.0.0.1:27017/pharmacy'
+     url: 'mongodb://localhost:27017/company'
 }
+
+
+// db name - company
+//collections name - phamacys

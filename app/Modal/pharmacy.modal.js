@@ -5,45 +5,49 @@ const Schema = mongoose.Schema;
 
 
 
-let pharmacy = new Schema({
+let Pharmacy = new Schema({
   
-    No:{
+    no:{
         type:String
     },
-    District:{
+    district:{
         type:String
     },
-    MOHArea:{
+    moharea:{
         type:String
     },
-    NameofthePharmacy:{
+    nop:{
         type:String
     },
-    Address:{
+    address:{
         type:String
     },
-    ContactNo:{
+    contactno:{
         type:String
     },
-    PharmacistName:{
+    pharmacistname:{
         type:String
     },
-    Owner:{
+    owner:{
         type:String
     },
-    WhatsappNo:{
+    whatsappno:{
         type:String
     },
-    ViberNo:{
+    viberno:{
         type:String
     },
-    Email:{
+    email:{
         type:String
     },
 });
 
 
+// Pharmacy.createIndexes({ district:"text", moharea:"text", nop:"text", address:"text"})
+// Pharmacy.index({district:"text"},{moharea:"text"}, {nop:"text"},{address:"text"} ,{ background: false });
 
+// Pharmacy.createIndex({district:"text"},{moharea:"text"}, {nop:"text"},{address:"text"} ,{ background: false });
 
+// Pharmacy.index({district:"text",moharea:"text", nop:"text",address:"text", background: false });
 
-module.exports = mongoose.model('pharmacy', pharmacy);
+module.exports = mongoose.model('phamacys', Pharmacy);
