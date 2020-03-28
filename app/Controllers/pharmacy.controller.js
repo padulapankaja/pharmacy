@@ -36,7 +36,8 @@ exports.pharmacy_specific = function (req, res) {
 exports.search = function (req, res) {
     var searchKeyword = req.body.search
     var tets = req.body.keyWor.id
-
+    console.log(tets);
+    
     function titleCase(str) {
         str = str.toLowerCase().split(' ');
         for (var i = 0; i < str.length; i++) {
@@ -54,7 +55,7 @@ exports.search = function (req, res) {
        
     //     res.send(err)
     // });
-    Pharmacy.find({  district: tets }).then(pharmacy => res.json(pharmacy)).catch(err => {
+    Pharmacy.find({  moharea: tets }).then(pharmacy => res.json(pharmacy)).catch(err => {
        
         res.send(err)
     });
