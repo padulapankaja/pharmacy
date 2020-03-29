@@ -6,31 +6,31 @@ exports.test = function (req, res) {
 
 
 // Retrieve and return all notes from the database.
-exports.findAll = function (req, res) {
-    Pharmacy.find()
-        .then(pharmacy => {
-            res.send(pharmacy);
-            // console.log(res);
+// exports.findAll = function (req, res) {
+//     Pharmacy.find()
+//         .then(pharmacy => {
+//             res.send(pharmacy);
+//             // console.log(res);
             
-        }).catch(err => {
-            res.send({
-                message: err.message || "Some error occurred while retrieving notes."
-            });
-        });
-};
+//         }).catch(err => {
+//             res.send({
+//                 message: err.message || "Some error occurred while retrieving notes."
+//             });
+//         });
+// };
 
 
 
-//get specif 
-exports.pharmacy_specific = function (req, res) {
-    Pharmacy.findById(req.params.id, function (err, pharmacy) {
-        if (err) {
-            return next(err);
-            console.log(err);
-        }
-        res.send(pharmacy);
-    })
-};
+// //get specif 
+// exports.pharmacy_specific = function (req, res) {
+//     Pharmacy.findById(req.params.id, function (err, pharmacy) {
+//         if (err) {
+//             return next(err);
+//             console.log(err);
+//         }
+//         res.send(pharmacy);
+//     })
+// };
 
 //get specif 
 exports.search = function (req, res) {
