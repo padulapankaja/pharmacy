@@ -1,15 +1,10 @@
-const Pharmacy = require('../Modal/pharmacy.modal');
-
-exports.test = function (req, res) {
-    res.json({ val: 'Greetings from the Test controller!', des: '1424', kk: '45455' });
-};
-
+const Phi = require('../Modal/phi.modal');
 
 // Retrieve and return all notes from the database.
 // exports.findAll = function (req, res) {
-//     Pharmacy.find()
-//         .then(pharmacy => {
-//             res.send(pharmacy);
+//     Phi.find()
+//         .then(phis => {
+//             res.send(phis);
 //             // console.log(res);
             
 //         }).catch(err => {
@@ -20,23 +15,9 @@ exports.test = function (req, res) {
 // };
 
 
-
-// //get specif 
-// exports.pharmacy_specific = function (req, res) {
-//     Pharmacy.findById(req.params.id, function (err, pharmacy) {
-//         if (err) {
-//             return next(err);
-//             console.log(err);
-//         }
-//         res.send(pharmacy);
-//     })
-// };
-
-//get specif 
 exports.search = function (req, res) {
-    // var searchKeyword = req.body.search
-    var tets = req.body.keyWor.id
-    console.log(tets);
+    var phiKeyword = req.body.keyWor.id
+    console.log(phiKeyword);
     
     function titleCase(str) {
         str = str.toLowerCase().split(' ');
@@ -46,20 +27,17 @@ exports.search = function (req, res) {
         return str.join(' ');
       }
     // console.log(searchKeyword);
-    console.log(tets);
-    tets = titleCase(tets);
-    console.log(tets);
+    console.log(phiKeyword);
+    tets = titleCase(phiKeyword);
+    console.log(phiKeyword);
     // Pharmacy.find({
     //     district:tets
     // }).then(pharmacy => res.json(pharmacy)).catch(err => {
        
     //     res.send(err)
     // });
-    Pharmacy.find({  moharea: tets }).then(pharmacy => res.json(pharmacy)).catch(err => {
+    Phi.find({  area: tets }).then(pharmacy => res.json(pharmacy)).catch(err => {
        
         res.send(err)
     });
 };
-
-
-
