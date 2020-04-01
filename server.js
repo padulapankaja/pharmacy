@@ -10,6 +10,8 @@ let port = 4000;
 
 const pharmacyroutes = require('./app/Routers/pharmacy.router'); // Imports routes for the products
 const phirouter = require('./app/Routers/phi.router'); // Imports routes for the products
+const utilfunctionsrouter = require('./app/Routers/utilfunctions.router'); // Imports utilfunctions router
+const helpforothers = require('./app/Routers/helpforother.route'); // Imports help for others router
 
 // import db
 const dbConfig = require('./Config/config.js');
@@ -23,6 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ------------------------------------------------------------------------
 app.use('/pharmacy', pharmacyroutes);
 app.use('/phi', phirouter);
+app.use('/validate',utilfunctionsrouter );
+app.use('/helpforothers',helpforothers );
 
 // ------------------------------------------------------------------------
 
