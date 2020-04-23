@@ -3,22 +3,31 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
+const fileUpload = require('express-fileupload')
+const path = require('path')
+const multer = require('multer');
+
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 let port = 4000;
+var upload = multer({ dest: "../public/" });
+app.use(express.static(path.join(__dirname, "public")));
 
 
 const pharmacyroutes = require('./app/Routers/pharmacy.router'); // Imports routes for the products
 const phirouter = require('./app/Routers/phi.router'); // Imports routes for the products
 const utilfunctionsrouter = require('./app/Routers/utilfunctions.router'); // Imports utilfunctions router
 const helpforothers = require('./app/Routers/helpforother.route'); // Imports help for others router
+const testimage = require('./app/Routers/testimage.router'); // Imports image  upload
 
 // import db
 const dbConfig = require('./Config/config.js');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(fileUpload())
+
 // app.use(bodyParser.urlencoded({extended: false}));
 
 
@@ -27,6 +36,7 @@ app.use('/pharmacy', pharmacyroutes);
 app.use('/phi', phirouter);
 app.use('/validate',utilfunctionsrouter );
 app.use('/helpforothers',helpforothers );
+app.use('/a',testimage );
 
 // ------------------------------------------------------------------------
 

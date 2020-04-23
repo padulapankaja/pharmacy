@@ -32,10 +32,6 @@ exports.add = function (req, res) {
     })
 };
 
-
-
-
-
 //get specif 
 exports.search = function (req, res) {
     // var searchKeyword = req.body.search
