@@ -13,12 +13,32 @@ let Articles = new Schema({
     title:{
         type:String
     },
-    desc:{
+    author:{
         type:String
     },
-    cont:{
-        type:Object
+    tag1:{
+        type:String
+    },
+    tag2:{
+        type:String
+    },
+    tag3:{
+        type:String
+    },
+    content:{
+        type:String
+    },
+    image:{
+        type:String
+    },
+    date:{
+        type:String
     }
+    ,
+    smalldes:{
+        type:String
+    }
+
 });
 
 

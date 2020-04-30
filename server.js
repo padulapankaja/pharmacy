@@ -3,15 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
-const fileUpload = require('express-fileupload')
-const path = require('path')
-const multer = require('multer');
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/profilepic/' })
 
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 let port = 4000;
-var upload = multer({ dest: "../public/" });
-app.use(express.static(path.join(__dirname, "public")));
+
 
 
 const pharmacyroutes = require('./app/Routers/pharmacy.router'); // Imports routes for the products
@@ -26,7 +24,8 @@ const dbConfig = require('./Config/config.js');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(fileUpload())
+app.use('/uploads', express.static('uploads'))
+mongoose.set('useCreateIndex', true);
 
 // app.use(bodyParser.urlencoded({extended: false}));
 
@@ -36,10 +35,25 @@ app.use('/pharmacy', pharmacyroutes);
 app.use('/phi', phirouter);
 app.use('/validate',utilfunctionsrouter );
 app.use('/helpforothers',helpforothers );
-app.use('/a',testimage );
+app.use('/art',testimage );
 
 // ------------------------------------------------------------------------
 
+app.use((req, res, next) => {
+    const error = new Error('Not found');
+    error.status = 404
+    next(error);
+
+});
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            message: error.message
+        }
+    });
+
+});
 
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
