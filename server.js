@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/profilepic/' })
+const http = require("http");
 
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
@@ -33,9 +34,9 @@ mongoose.set('useCreateIndex', true);
 // ------------------------------------------------------------------------
 app.use('/pharmacy', pharmacyroutes);
 app.use('/phi', phirouter);
-app.use('/validate',utilfunctionsrouter );
-app.use('/helpforothers',helpforothers );
-app.use('/art',testimage );
+app.use('/validate', utilfunctionsrouter);
+app.use('/helpforothers', helpforothers);
+app.use('/art', testimage);
 
 // ------------------------------------------------------------------------
 
@@ -54,6 +55,26 @@ app.use((error, req, res, next) => {
     });
 
 });
+
+
+
+
+
+
+// // addd mongo clieew
+// const uri = "mongodb+srv://padulaguruge:Default123@cluster0-aa0hd.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+
+//     const collection = client.db("test").collection("devices");
+//     if (err) {
+//         console.log('Error occurred while connecting to MongoDB Atlas...\n', err);
+//     }
+//     console.log('Connected...');
+//     // perform actions on the collection object
+//     client.close();
+// })
+
 
 // Connecting to the database
 mongoose.connect(dbConfig.url, {

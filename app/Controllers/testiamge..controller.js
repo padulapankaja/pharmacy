@@ -111,8 +111,24 @@ exports.allArticels = function (req, res) {
 exports.specisificArticle = function (req, res) {
 
   var id = req.params.id
-
+    console.log("dsd")
   Articles.find({ _id: id }).then(articel => res.json(articel)).catch(err => {
     res.send(err)
   });
+};
+
+
+
+exports.psot_specific_details = function (req, res, next) {
+    console.log(req.params.id)
+    console.log("dsddsd")
+    Articles.findById( {"_id" :  req.params.id}, function (err, post) {
+        if (err) {
+            return next(err);
+            console.log(err);
+        }
+       return  res.status(200).json({
+           data : post
+       });
+    })
 };

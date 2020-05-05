@@ -41,9 +41,11 @@ router.post('/add', upload.single('photos') , testimage.upload);
 
 
 
-router.get('/get/:id', testimage.specisificArticle);
+// router.get('/get/:id', testimage.specisificArticle);
 
 router.get('/get',testimage.allArticels);
+
+router.get('/sin/:id' , testimage.psot_specific_details);
 
 
 
