@@ -18,6 +18,7 @@ const phirouter = require('./app/Routers/phi.router'); // Imports routes for the
 const utilfunctionsrouter = require('./app/Routers/utilfunctions.router'); // Imports utilfunctions router
 const helpforothers = require('./app/Routers/helpforother.route'); // Imports help for others router
 const testimage = require('./app/Routers/testimage.router'); // Imports image  upload
+const news = require('./app/Routers/news.route'); // Imports image  upload
 
 // import db
 const dbConfig = require('./Config/config.js');
@@ -37,6 +38,7 @@ app.use('/phi', phirouter);
 app.use('/validate', utilfunctionsrouter);
 app.use('/helpforothers', helpforothers);
 app.use('/art', testimage);
+app.use('/news', news);
 
 // ------------------------------------------------------------------------
 

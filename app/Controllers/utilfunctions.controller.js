@@ -11,7 +11,7 @@ exports.validate = async function (req, res) {
     var counrty = 'LK'
     var format = '0'
     var details
- await axios.get(host+'?access_key='+access_key+'&number='+number+'&country_code='+counrty+'&format'+format).then(res => {
+    await axios.get(host+'?access_key='+access_key+'&number='+number+'&country_code='+counrty+'&format'+format).then(res => {
     
     details = res.data
     // console.log(this.state.allNews);
